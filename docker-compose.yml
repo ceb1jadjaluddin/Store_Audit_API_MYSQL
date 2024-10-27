@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    volumes:
+      - ./site:/var/www/html
+    ports:
+      - 8080:80
+  database:
+      image: mysql
+      volumes:
+        - ./db_data:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: pass321
+        MYSQL_DATABASE: STORE_AUDIT
+        MYSQL_USER: sampleuser
+        MYSQL_PASSWORD: pass123
+      ports:
+        - 3306:3306
+
